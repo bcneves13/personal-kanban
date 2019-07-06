@@ -1,0 +1,25 @@
+<header>
+	Welcome to your dashboard of TO-DO lists
+</header>
+<div class="container">
+	<form [formGroup]="formTask" class="form-input" (ngSubmit)="submit()">
+		<mat-form-field class="task-input" *ngIf="showForm">
+			<input #inputTask matInput formControlName="task" placeholder="Digite o nome da tarefa" autocomplete="off" class="task-name" type="text">
+		</mat-form-field>
+		<div class="create-task" *ngIf="!showForm">
+			<button title="Adicione uma tarefa" type="button" mat-fab color="primary" (click)="addTask()"> 
+				<mat-icon>add</mat-icon>
+			</button>
+		</div>
+		<div class="control-task" *ngIf="showForm">
+			<button  *ngIf="formTask.valid" type="submit" class="success" mat-fab> 
+				<mat-icon>done</mat-icon>
+			</button>
+			<button *ngIf="!formTask.valid" type="button" mat-fab color="warn" (click)="cancelAddTask()"> 
+				<mat-icon>clear</mat-icon>
+			</button>
+		</div>
+	</form>
+
+	<todo-list></todo-list>
+</div>

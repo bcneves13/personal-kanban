@@ -1,0 +1,15 @@
+$colors: (
+	primary: #3378e8,
+	text: #FFFFFF,
+	success: #4BB543,
+);
+
+$errorColor: #bbff00;
+
+@function getColor($name) {
+	$finalColor: $errorColor;
+	@if map-has-key($colors, $name) {
+		$finalColor: map-get($colors, $name);
+	}
+	@return $finalColor;
+}
